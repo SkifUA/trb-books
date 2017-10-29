@@ -1,0 +1,44 @@
+version: "2"
+services:
+  db:
+    image: postgres:latest
+    volumes:
+      - /var/lib/postgresql/data
+    ports:
+      - '5432'
+    environment:
+      POSTGRES_USER: 'postgres'
+      POSTGRES_PASSWORD: 'development'
+    command: 'postgres -c fsync=off'
+
+  bundler-cache:
+    image: ruby:2.4.0
+    command: /bin/true
+    volumes:
+      - /usr/local/bundle
+
+  web:
+    build: .
+    command: "bundle exec rails s -p 3000 -b '0.0.0.0'"
+    environment:
+      RAILS_ENV: development
+    links:
+      - db:postgresdb
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/var/www/app
+    volumes_from:
+      - bundler-cache
+
+#  tests:
+#    build: .
+#    dockerfile: Dockerfile.tests
+#    command: bundle exec rspec
+#    environment:
+#      RAILS_ENV: test
+#    links:
+#      - db:db
+#    volumes_from:
+#      - bundler-cache
+#      - web
