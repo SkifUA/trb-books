@@ -21,4 +21,18 @@ class BooksController < ApplicationController
 
     render cell(Book::Cell::New, @form), layout: false
   end
+
+  def edit
+    run Book::Update::Present
+    render cell(Book::Cell::Edit, @form), layout: false
+  end
+
+  def update
+    run Book::Update do |result|
+      flash[:notice] = "#{result["model"].title} has been saved"
+      return redirect_to book_path(result["model"].id)
+    end
+
+    render cell(Book::Cell::Edit, @form), layout: false
+  end
 end
