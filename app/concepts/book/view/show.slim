@@ -1,0 +1,16 @@
+.post-preview
+  h1
+    = title
+  h3
+    = author
+  p
+    = summary
+  p.post-meta
+    = "Created at #{time.strftime("%d %B %Y")}"
+.row
+  .col-sm-3.text-center
+    h6 = edit
+  .col-sm-6.text-center
+    h6 = delete
+  .col-sm-3.text-center
+    h6 = back
