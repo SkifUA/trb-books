@@ -1,0 +1,19 @@
+.row.new
+  h1 New Book
+
+  = simple_form_for model do |f|
+    .row
+      .col-sm-12
+        = f.input :title, placeholder: "Title", label: false
+    .row
+      .col-sm-12
+        = f.input :author, placeholder: "Author", label: false
+    .row
+      .col-sm-12
+        = f.input :summary, placeholder: "Summary", label: false
+    .row
+      .col-sm-12
+        = f.input :image, placeholder: "Image", label: false
+    .row
+      .col-sm-12
+        = f.submit 'Create Book'
