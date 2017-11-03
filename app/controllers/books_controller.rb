@@ -6,7 +6,7 @@ class BooksController < ApplicationController
 
   def show
     run Book::Show
-    render cell(Book::Cell::Show, result["model"]), layout: false
+    render cell(Book::Cell::Show, result["model"])#, layout: false
   end
 
   def new
@@ -24,7 +24,7 @@ class BooksController < ApplicationController
 
   def edit
     run Book::Update::Present
-    render cell(Book::Cell::Edit, @form), layout: false
+    render cell(Book::Cell::Edit, @form)#, layout: false
   end
 
   def update
@@ -34,5 +34,12 @@ class BooksController < ApplicationController
     end
 
     render cell(Book::Cell::Edit, @form), layout: false
+  end
+
+  def destroy
+    run Book::Delete
+
+    flash[:alert] = "Post deleted"
+    redirect_to books_path
   end
 end
