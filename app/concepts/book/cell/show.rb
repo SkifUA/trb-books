@@ -15,8 +15,8 @@ module Book::Cell
       model.genres.map{ |g| g.name }.join(', ')
     end
 
-    def show_image
-      image_tag model.image
+    def book_img
+      image_tag img
     end
 
     def edit
@@ -29,6 +29,12 @@ module Book::Cell
 
     def back
       link_to "Back to books list", books_path
+    end
+
+    private
+
+    def img
+      model.image.model.image? ? model.image : "http://placehold.it/#{BookUploader::SIZE_MAIN[:height]}x#{BookUploader::SIZE_MAIN[:width]}"
     end
   end
 end
