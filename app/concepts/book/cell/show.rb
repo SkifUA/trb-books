@@ -11,6 +11,10 @@ module Book::Cell
       model.created_at
     end
 
+    def show_image
+      image_tag model.image
+    end
+
     def edit
       link_to "Edit", edit_book_path(model.id)
     end
