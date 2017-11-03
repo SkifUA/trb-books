@@ -11,6 +11,10 @@ module Book::Cell
       model.created_at
     end
 
+    def genres
+      model.genres.map{ |g| g.name }.join(', ')
+    end
+
     def show_image
       image_tag model.image
     end

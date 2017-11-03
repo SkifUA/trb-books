@@ -9,6 +9,7 @@ module Book::Contract
     property :author
     property :summary
     property :image
+    property :genre_ids
 
     validation  do
       required(:title).filled
