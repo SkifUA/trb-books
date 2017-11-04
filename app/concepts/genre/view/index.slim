@@ -1,4 +1,4 @@
 = total
-.row
-  - model.each do |m|
-    p = m.name
+= new
+
+= cell(Genre::Cell::Item, collection: model)
