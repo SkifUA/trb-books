@@ -1,0 +1,13 @@
+.row
+  h1 Edit Genre
+
+  = simple_form_for model do |f|
+    .row
+      .col-sm-12
+        = f.input :name, placeholder: 'Name Genre', label: false
+    .row
+      .col-sm-12
+        = f.submit 'Save Genre'
+
+  p = back
+  p = to_books

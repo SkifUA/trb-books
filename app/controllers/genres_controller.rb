@@ -21,9 +21,16 @@ class GenresController < ApplicationController
   end
 
   def edit
+    run Genre::Update::Present
+    render cell(Genre::Cell::Edit, @form)
   end
 
   def update
+    run Genre::Update do |result|
+      return  redirect_to genres_path
+    end
+
+    render cell(Genre::Cell::Edit)
   end
 
   def destroy

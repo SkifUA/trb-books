@@ -3,11 +3,11 @@ module Genre::Cell
     property :name
 
     def edit
-      link_to 'edit', genres_path(model), method: :put
+      link_to 'edit', edit_genre_path(model)
     end
 
     def delete
-      link_to 'delete', genres_path(model), method: :delete
+      link_to 'delete', genre_path(model), method: :delete
     end
   end
 end
