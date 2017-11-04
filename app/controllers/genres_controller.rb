@@ -8,9 +8,16 @@ class GenresController < ApplicationController
   end
 
   def new
+    run Genre::Create::Present
+    render cell(Genre::Cell::New, @form)
   end
 
   def create
+    run Genre::Create do |result|
+      return redirect_to genres_path
+    end
+
+    render cell(Genre::Cell::New, @form)
   end
 
   def edit
