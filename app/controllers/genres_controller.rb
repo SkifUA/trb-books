@@ -4,9 +4,6 @@ class GenresController < ApplicationController
     render cell(Genre::Cell::Index, result['model'])
   end
 
-  def show
-  end
-
   def new
     run Genre::Create::Present
     render cell(Genre::Cell::New, @form)
