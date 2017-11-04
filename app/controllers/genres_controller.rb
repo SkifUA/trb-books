@@ -31,5 +31,9 @@ class GenresController < ApplicationController
   end
 
   def destroy
+    run Genre::Delete
+
+    flash[:alert] = "Genre deleted"
+    redirect_to genres_path
   end
 end
