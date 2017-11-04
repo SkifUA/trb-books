@@ -1,7 +1,7 @@
 module Book::Cell
   class Index < Trailblazer::Cell
     def total
-      return "No posts" if model.size == 0
+      return "No books" if model.size == 0
     end
 
     def new
