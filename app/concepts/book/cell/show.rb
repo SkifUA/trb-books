@@ -19,6 +19,10 @@ module Book::Cell
       image_tag img
     end
 
+    def edit_genres
+      link_to 'Genres', genres_path
+    end
+
     def edit
       link_to "Edit", edit_book_path(model.id)
     end
