@@ -8,6 +8,10 @@ head
   = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 
 body
+  - if current_user
+    = link_to 'Sign Out', destroy_user_session_path, method: :delete
+  - else
+    = link_to 'Log In', new_user_session_path
   p.notice
     = notice
   p.alert
