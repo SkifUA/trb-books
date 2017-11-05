@@ -1,4 +1,5 @@
 class GenresController < ApplicationController
+  before_action :authenticate_user!
   def index
     run Genre::Index
     render cell(Genre::Cell::Index, result['model'])

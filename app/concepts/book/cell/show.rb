@@ -1,6 +1,7 @@
 module Book::Cell
 
   class Show < Trailblazer::Cell
+    include Devise::Controllers::Helpers
     property :title
     property :author
     property :summary
@@ -20,16 +21,23 @@ module Book::Cell
     end
 
     def edit_genres
-      link_to 'Genres', genres_path
+      if user_signed_in?
+        link_to 'Genres', genres_path
+      end
     end
 
     def edit
-      link_to "Edit", edit_book_path(model.id)
+      if user_signed_in?
+        link_to "Edit", edit_book_path(model.id)
+      end
     end
 
     def delete
-      link_to "Delete", book_path(model.id), method: :delete, data: {confirm: 'Are you sure?'}
+      if user_signed_in?
+        link_to "Delete", book_path(model.id), method: :delete, data: {confirm: 'Are you sure?'}
+      end
     end
+
 
     def back
       link_to "Back to books list", books_path

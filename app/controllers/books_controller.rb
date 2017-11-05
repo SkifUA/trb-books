@@ -1,7 +1,8 @@
 class BooksController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   def index
     run Book::Index
-    render cell(Book::Cell::Index, result["model"]), layout: false
+    render cell(Book::Cell::Index, result["model"])#, layout: false
   end
 
   def show
