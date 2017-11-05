@@ -48,3 +48,4 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'carrierwave', '~> 0.11.2'
 gem 'mini_magick', '~> 4.8'
+gem 'devise', '~> 4.3'

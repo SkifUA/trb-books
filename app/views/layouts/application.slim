@@ -8,6 +8,10 @@ head
   = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 
 body
+  p.notice
+    = notice
+  p.alert
+    = alert
   p = flash[:notice]
   p = flash[:error]
   p = flash[:alert]
